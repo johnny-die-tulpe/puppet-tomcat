@@ -37,8 +37,8 @@ class tomcat::logging {
 
   file {'/var/log/tomcat':
     ensure => directory,
-    owner  => 'tomcat',
-    group  => 'tomcat',
+    owner  => $::tomcat::tomcat_user,
+    group  => $::tomcat::tomcat_user,
   }
 
   file {'commons-logging.jar':

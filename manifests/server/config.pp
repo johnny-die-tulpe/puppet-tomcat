@@ -4,7 +4,7 @@ define tomcat::server::config(
   $setenv,
   $shutdown,
   $group = 'adm',
-  $owner = 'tomcat',
+  $owner = $::tomcat::tomcat_user,
 ) {
   # Default JVM options
   concat_build { "setenv.sh_${name}": } ->

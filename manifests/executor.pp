@@ -54,7 +54,7 @@
 define tomcat::executor(
   $instance,
   $ensure            = present,
-  $owner             = 'tomcat',
+  $owner             = $::tomcat::tomcat_user,
   $group             = 'adm',
   $thread_priority   = false,
   $daemon            = true,
@@ -72,7 +72,7 @@ define tomcat::executor(
   }
   validate_absolute_path($_basedir)
 
-  if $owner == 'tomcat' {
+  if $owner == $::tomcat::tomcat_user {
     $filemode = '0460'
   } else {
     $filemode = '0664'

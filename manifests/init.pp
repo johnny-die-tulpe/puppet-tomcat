@@ -6,6 +6,7 @@ class tomcat (
   $instance_basedir = $tomcat::params::instance_basedir,
   $tomcat_uid       = undef,
   $tomcat_gid       = undef,
+  $tomcat_user      = 'tomcat',
   $ulimits          = {},
 ) inherits ::tomcat::params {
 

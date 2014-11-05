@@ -50,7 +50,7 @@ define tomcat::connector(
   $port,
   $instance           = undef,
   $ensure             = present,
-  $owner              = 'tomcat',
+  $owner              = $::tomcat::tomcat_user,
   $group              = 'adm',
   $protocol           = 'HTTP/1.1',
   $uri_encoding       = 'UTF-8',
@@ -104,7 +104,7 @@ define tomcat::connector(
     }
     validate_absolute_path($_basedir)
 
-    if $owner == 'tomcat' {
+    if $owner == $::tomcat::tomcat_user {
       $filemode = '0460'
     } else {
       $filemode = '0664'

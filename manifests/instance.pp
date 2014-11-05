@@ -94,7 +94,7 @@
 #
 define tomcat::instance(
   $ensure             = present,
-  $owner              = 'tomcat',
+  $owner              = $::tomcat::tomcat_user,
   $group              = 'adm',
   $server_port        = '8005',
   $http_port          = '8080',
@@ -158,7 +158,7 @@ define tomcat::instance(
   $tomcat_name = $name
   $basedir = "${_basedir}/${name}"
 
-  if $owner == 'tomcat' {
+  if $owner == $::tomcat::tomcat_user {
     $dirmode  = $webapp_mode ? {
       ''      => '2770',
       default => $webapp_mode,
