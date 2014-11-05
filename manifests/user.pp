@@ -12,5 +12,5 @@ class tomcat::user {
       command => "/usr/sbin/usermod -m -d ${::tomcat::instance_basedir} ${::tomcat::tomcat_user}",
       unless  => "/bin/egrep '(${::tomcat::tomcat_user}.*:${::tomcat::instance_basedir}:)' /etc/passwd",
     }
- }
+  }
 }
